@@ -1,0 +1,106 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mam's Pizza</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" async />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Tajawal:wght@200;300;400;500;700;800;900" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header container">
+    <a href="index.html" class="logo">
+      <img id="logoImg" src="" alt="شعار" loading="lazy">
+      <span id="siteName"></span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="active">الرئيسية</a>
+      <a href="menu.html">المنيو</a>
+      <a href="favorites.html">المفضلة <span class="badge" id="favCount">0</span></a>
+      <a href="cart.html">السلة <span class="badge" id="cartCount">0</span></a>
+      <a href="contact.html">التواصل</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="banner">
+      <div id="bannerSlider" class="slider"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>العروض المميزة</h2>
+        <a href="menu.html" class="view-all">عرض الكل</a>
+      </div>
+      <div id="featuredRow" class="cards scroller"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img id="footerLogo" src="" alt="شعار القدم" loading="lazy">
+        <span id="footerName"></span>
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="menu.html">المنيو</a>
+        <a href="favorites.html">المفضلة</a>
+        <a href="cart.html">السلة</a>
+        <a href="contact.html">التواصل</a>
+      </nav>
+      <div class="footer-contact">
+        <a id="footerPhone" href="">اتصل بنا</a>
+        <a id="footerWhats" href="">واتساب</a>
+        <div id="footerAddress"></div>
+      </div>
+    </div>
+    <div class="subfooter">
+      © <span id="yearNow"></span> <span id="copyName"></span> — <span id="footerTag"></span>
+    </div>
+  </footer>
+</body>
+</html>
