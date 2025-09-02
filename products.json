@@ -1,124 +1,128 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "name": "بيتزا مارجريتا",
-      "desc": "صلصة طماطم، موزاريلا، ريحان طازج.",
-      "image": "https://images.unsplash.com/photo-1548365328-9f547fb09501?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "pizza",
-      "tags": ["إيطالي"],
-      "optionsEnabled": true,
-      "prices": {"S": 85, "M": 120, "L": 155},
-      "featured": true,
-      "keywords": "مارجريتا بيتزا ايطالي جبن"
-    },
-    {
-      "id": 2,
-      "name": "بيتزا ببروني",
-      "desc": "شرائح ببروني، جبن موزاريلا، صوص خاص.",
-      "image": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "pizza",
-      "tags": ["إيطالي"],
-      "optionsEnabled": true,
-      "prices": {"S": 95, "M": 135, "L": 175},
-      "featured": true,
-      "keywords": "pepperoni بيتزا ايطالي"
-    },
-    {
-      "id": 3,
-      "name": "بيتزا شرقي لحمة",
-      "desc": "لحمة مفرومة متبلة على الطريقة الشرقية.",
-      "image": "https://images.unsplash.com/photo-1613564834361-4c78d5d67616?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "pizza",
-      "tags": ["شرقي"],
-      "optionsEnabled": true,
-      "prices": {"S": 100, "M": 145, "L": 185},
-      "featured": false,
-      "keywords": "شرقي لحمة بيتزا"
-    },
-    {
-      "id": 4,
-      "name": "فطير مشلتت سادة",
-      "desc": "فطير مصري تقليدي مقرمش من الخارج وهش من الداخل.",
-      "image": "https://images.unsplash.com/photo-1540462594391-8b454c2b1f82?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "feteer",
-      "tags": ["حادق"],
-      "optionsEnabled": false,
-      "prices": {"S": 70, "M": 0, "L": 0},
-      "featured": true,
-      "keywords": "فطير مشلتت فطائر"
-    },
-    {
-      "id": 5,
-      "name": "فطير نوتيلا",
-      "desc": "فطير بحشوة شوكولاتة نوتيلا مع مكسرات.",
-      "image": "https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "feteer",
-      "tags": ["حلو", "كيري"],
-      "optionsEnabled": false,
-      "prices": {"S": 95, "M": 0, "L": 0},
-      "featured": true,
-      "keywords": "فطير نوتيلا حلو"
-    },
-    {
-      "id": 6,
-      "name": "كريب دجاج",
-      "desc": "كريب محشو بالدجاج المشوي مع صوص خاص.",
-      "image": "https://images.unsplash.com/photo-1585238342028-4cbc0f37f4f4?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "crepe",
-      "tags": ["حادق"],
-      "optionsEnabled": false,
-      "prices": {"S": 85, "M": 0, "L": 0},
-      "featured": false,
-      "keywords": "كريب دجاج حادق"
-    },
-    {
-      "id": 7,
-      "name": "مكرونة بشاميل",
-      "desc": "مكرونة بالباشميل واللحم المفروم على الطريقة المنزلية.",
-      "image": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "pasta",
-      "tags": ["ريد صوص"],
-      "optionsEnabled": false,
-      "prices": {"S": 90, "M": 0, "L": 0},
-      "featured": false,
-      "keywords": "مكرونة بشاميل باستا"
-    },
-    {
-      "id": 8,
-      "name": "حواوشي جبن",
-      "desc": "حواوشي لحم مع جبن ذائب وتوابل مميزة.",
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "hawawshi",
-      "tags": ["جبن"],
-      "optionsEnabled": false,
-      "prices": {"S": 75, "M": 0, "L": 0},
-      "featured": true,
-      "keywords": "حواوشي جبن"
-    },
-    {
-      "id": 9,
-      "name": "بطاطس محمرة",
-      "desc": "مقرمشة ساخنة تقدم مع صوص اختيارك.",
-      "image": "https://images.unsplash.com/photo-1541599188778-cdc73298e8f8?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "app",
-      "tags": ["ساخن"],
-      "optionsEnabled": false,
-      "prices": {"S": 45, "M": 0, "L": 0},
-      "featured": false,
-      "keywords": "بطاطس مقبلات"
-    },
-    {
-      "id": 10,
-      "name": "كوكاكولا",
-      "desc": "مشروب غازي منعش 330 مل.",
-      "image": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?q=80&w=600&auto=format&fit=crop&fm=webp",
-      "category": "drinks",
-      "tags": ["صودا"],
-      "optionsEnabled": false,
-      "prices": {"S": 25, "M": 0, "L": 0},
-      "featured": false,
-      "keywords": "مشروبات صودا"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "بيتزا مارغريتا",
+    "description": "بيتزا إيطالية كلاسيكية مع صلصة الطماطم، جبن الموزاريلا، والريحان الطازج",
+    "image": "https://i.pinimg.com/originals/71/08/52/710852314a8dbed556f17ed7ee669241.jpg",
+    "category": "pizza",
+    "subCategory": "italian",
+    "hasSizes": true,
+    "sizes": [
+      { "size": "S", "price": 25.00 },
+      { "size": "M", "price": 35.00 },
+      { "size": "L", "price": 45.00 }
+    ],
+    "popular": true
+  },
+  {
+    "id": 2,
+    "name": "بيتزا شرقية",
+    "description": "بيتزا باللحم المفروم، الفلفل، والبصل مع توابل شرقية",
+    "image": "https://th.bing.com/th/id/R.8782baa5de857348069d15920a6f25ef?rik=eWJueTtkThRvKg&pid=ImgRaw&r=0",
+    "category": "pizza",
+    "subCategory": "eastern",
+    "hasSizes": true,
+    "sizes": [
+      { "size": "S", "price": 28.00 },
+      { "size": "M", "price": 38.00 },
+      { "size": "L", "price": 48.00 }
+    ],
+    "popular": false
+  },
+  {
+    "id": 3,
+    "name": "فطيرة حادقة",
+    "description": "فطيرة محشوة بالجبن الأبيض، الزيتون، والطماطم",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.F3zvydg4Q2lhAiA7Iy7bngHaEK?cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "category": "pie",
+    "subCategory": "savory",
+    "hasSizes": true,
+    "sizes": [
+      { "size": "S", "price": 20.00 },
+      { "size": "M", "price": 30.00 },
+      { "size": "L", "price": 40.00 }
+    ],
+    "popular": true
+  },
+  {
+    "id": 4,
+    "name": "فطيرة حلوة بالنوتيلا",
+    "description": "فطيرة محشوة بالنوتيلا والموز",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.1fk_F3ilg6EpEXpQPIhotAHaE8?cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "category": "pie",
+    "subCategory": "sweet",
+    "hasSizes": false,
+    "price": 25.00,
+    "popular": false
+  },
+  {
+    "id": 5,
+    "name": "كريب دجاج",
+    "description": "كريب محشو بالدجاج المشوي، الخس، والمايونيز",
+    "image": "https://www.thaqfny.com/wp-content/uploads/2021/05/%D9%83%D8%B1%D9%8A%D8%A82.jpg",
+    "category": "crepe",
+    "subCategory": "savory",
+    "hasSizes": false,
+    "price": 22.00,
+    "popular": true
+  },
+  {
+    "id": 6,
+    "name": "كريب نوتيلا وفراولة",
+    "description": "كريب بالنوتيلا، الفراولة، ورذاذ السكر البودرة",
+    "image": "https://th.bing.com/th/id/R.31bf933b18c4eb98b731d3a7d5e2a380?rik=9KvFR67AL1lZSQ&pid=ImgRaw&r=0",
+    "category": "crepe",
+    "subCategory": "sweet",
+    "hasSizes": false,
+    "price": 20.00,
+    "popular": false
+  },
+  {
+    "id": 7,
+    "name": "مكرونة بالبشاميل",
+    "description": "مكرونة مخبوزة مع صلصة البشاميل واللحم المفروم",
+    "image": "https://th.bing.com/th/id/R.29b52900f0817c5bd3f982f0f6374cb6?rik=U6mQFroHMMaBqA&pid=ImgRaw&r=0",
+    "category": "pasta",
+    "subCategory": "none",
+    "hasSizes": true,
+    "sizes": [
+      { "size": "S", "price": 18.00 },
+      { "size": "M", "price": 25.00 },
+      { "size": "L", "price": 35.00 }
+    ],
+    "popular": true
+  },
+  {
+    "id": 8,
+    "name": "حواوشي",
+    "description": "خبز محشو باللحم المفروم المتبل",
+    "image": "https://th.bing.com/th/id/R.8858b9289503f907ad9c5be9d1361bc6?rik=XJseaTTvE07W0Q&pid=ImgRaw&r=0",
+    "category": "hawawshi",
+    "subCategory": "none",
+    "hasSizes": false,
+    "price": 15.00,
+    "popular": false
+  },
+  {
+    "id": 9,
+    "name": "بطاطس مقلية",
+    "description": "بطاطس مقلية مقرمشة مع صوص الكاتشب",
+    "image": "https://th.bing.com/th/id/R.122f2a088af7281a978441c228b9369d?rik=6TcU3sXTVTZHiA&pid=ImgRaw&r=0",
+    "category": "appetizer",
+    "subCategory": "none",
+    "hasSizes": false,
+    "price": 12.00,
+    "popular": true
+  },
+  {
+    "id": 10,
+    "name": "كولا",
+    "description": "مشروب غازي منعش",
+    "image": "https://th.bing.com/th/id/R.0864d0c2f40bbe78d1c58f2390af5769?rik=maVQNcIeDpHoBg&riu=http%3a%2f%2fwww.greenmax-machine.com%2fpics%2fcoca-cola-bottles-recycling_151113.jpg&ehk=QOms9XnkvQ8ISsOwsYHkY7JbQwgb%2f8%2bZddOsxXnOhfw%3d&risl=&pid=ImgRaw&r=0",
+    "category": "drink",
+    "subCategory": "none",
+    "hasSizes": false,
+    "price": 5.00,
+    "popular": false
+  }
+]

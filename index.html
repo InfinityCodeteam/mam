@@ -1,106 +1,93 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mam's Pizza</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" async />
-  <link href="https://fonts.googleapis.com/css2?display=swap&family=Tajawal:wght@200;300;400;500;700;800;900" rel="stylesheet">
-  <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script defer src="script.js"></script>
+  <title>الرئيسية - Mam's Pizza</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="site-header container">
-    <a href="index.html" class="logo">
-      <img id="logoImg" src="" alt="شعار" loading="lazy">
-      <span id="siteName"></span>
-    </a>
-    <nav class="main-nav">
-      <a href="index.html" class="active">الرئيسية</a>
-      <a href="menu.html">المنيو</a>
-      <a href="favorites.html">المفضلة <span class="badge" id="favCount">0</span></a>
-      <a href="cart.html">السلة <span class="badge" id="cartCount">0</span></a>
-      <a href="contact.html">التواصل</a>
-    </nav>
-  </header>
+<body class="font-noto bg-white text-gray-900 min-h-screen">
+  <!-- Notification -->
+  <div id="notification" class="fixed top-4 right-4 z-50 hidden p-4 rounded-lg shadow-lg text-white font-tajawal transform transition-all duration-300 opacity-0"></div>
 
-  <main class="container">
-    <section class="banner">
-      <div id="bannerSlider" class="slider"></div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>العروض المميزة</h2>
-        <a href="menu.html" class="view-all">عرض الكل</a>
+  <!-- Navbar -->
+  <nav class="bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-white p-4 sticky top-0 shadow-lg z-40 transition duration-300">
+    <div class="container mx-auto flex flex-wrap justify-between items-center">
+      <div class="flex items-center">
+        <img id="logo" src="" alt="Mam's Pizza Logo" class="h-12 animate-slide-in">
+        <span class="mr-2 font-tajawal font-bold text-xl">Mam's Pizza</span>
       </div>
-      <div id="featuredRow" class="cards scroller"></div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img id="footerLogo" src="" alt="شعار القدم" loading="lazy">
-        <span id="footerName"></span>
-      </div>
-      <nav class="footer-nav">
-        <a href="index.html">الرئيسية</a>
-        <a href="menu.html">المنيو</a>
-        <a href="favorites.html">المفضلة</a>
-        <a href="cart.html">السلة</a>
-        <a href="contact.html">التواصل</a>
-      </nav>
-      <div class="footer-contact">
-        <a id="footerPhone" href="">اتصل بنا</a>
-        <a id="footerWhats" href="">واتساب</a>
-        <div id="footerAddress"></div>
+      <div class="flex flex-wrap items-center space-x-2 mt-2 sm:mt-0">
+        <div id="nav-links" class="flex flex-wrap space-x-2 font-tajawal">
+          <a href="index.html" class="nav-link bg-yellow-500 text-black font-bold px-4 py-2 rounded-lg transition transform hover:scale-105">الرئيسية</a>
+          <a href="menu.html" class="nav-link px-4 py-2 rounded-lg transition duration-300">المنيو</a>
+          <a href="favorites.html" class="nav-link px-4 py-2 rounded-lg transition duration-300">المفضلة</a>
+          <a href="cart.html" class="nav-link px-4 py-2 rounded-lg transition duration-300">السلة</a>
+          <a href="contact.html" class="nav-link px-4 py-2 rounded-lg transition duration-300">تواصل معنا</a>
+        </div>
       </div>
     </div>
-    <div class="subfooter">
-      © <span id="yearNow"></span> <span id="copyName"></span> — <span id="footerTag"></span>
+  </nav>
+
+  <!-- Banner -->
+  <section class="relative h-96 overflow-hidden">
+    <div id="banner" class="w-full h-full flex transition-all duration-1000">
+      <!-- Banner images will be loaded dynamically -->
+    </div>
+    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-tajawal font-bold mb-4 animate-fade-in">مرحبًا بكم في Mam's Pizza</h1>
+        <p class="text-xl mb-6 animate-fade-in opacity-0" style="animation-delay: 0.3s;">استمتع بألذ البيتزا المعدة بحب!</p>
+        <a href="menu.html" class="inline-block bg-yellow-500 text-red-900 px-6 py-3 rounded-lg hover:bg-yellow-600 transition duration-300 transform hover:scale-105 font-tajawal font-bold animate-pulse-slow">استعرض المنيو</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Offers -->
+  <section class="container mx-auto py-12 px-4">
+    <h2 class="text-3xl font-tajawal font-bold text-center mb-8 animate-fade-in">العروض المميزة</h2>
+    <div id="featured-offers" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-white py-4">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center md:text-right">
+          <img id="footer-logo" src="" alt="Mam's Pizza Logo" class="h-12 mx-auto md:mr-0 md:ml-auto mb-4">
+          <p class="font-tajawal">Mam's Pizza - ألذ البيتزا منذ 2010</p>
+        </div>
+        <div>
+          <h3 class="font-tajawal font-bold text-lg mb-2 border-b border-yellow-500 pb-1">روابط سريعة</h3>
+          <ul class="space-y-1">
+            <li><a href="index.html" class="hover:text-yellow-400 transition">الرئيسية</a></li>
+            <li><a href="menu.html" class="hover:text-yellow-400 transition">المنيو</a></li>
+            <li><a href="favorites.html" class="hover:text-yellow-400 transition">المفضلة</a></li>
+            <li><a href="cart.html" class="hover:text-yellow-400 transition">السلة</a></li>
+            <li><a href="contact.html" class="hover:text-yellow-400 transition">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-tajawal font-bold text-lg mb-2 border-b border-yellow-500 pb-1">ساعات العمل</h3>
+          <ul class="space-y-1">
+            <li>الأحد - الخميس: 10 صباحاً - 12 منتصف الليل</li>
+            <li>الجمعة - السبت: 1 ظهراً - 1 صباحاً</li>
+          </ul>
+        </div>
+        <div id="contact-info">
+          <h3 class="font-tajawal font-bold text-lg mb-2 border-b border-yellow-500 pb-1">تواصل معنا</h3>
+        </div>
+      </div>
+      <div class="border-t border-red-800 mt-4 pt-4 text-center">
+        <p>&copy; 2025 Mam's Pizza. جميع الحقوق محفوظة</p>
+      </div>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

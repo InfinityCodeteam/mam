@@ -1,17 +1,14 @@
 {
-  "siteName": "Mam's Pizza",
   "logo": "https://i.postimg.cc/bvxrq8hK/Picsart-25-08-31-21-42-16-870.png",
-  "phone": "+201001234567",
-  "whatsapp": "201027176052",
-  "address": "شارع 10، المعادي، القاهرة",
-  "footerTagline": "ألذ بيتزا وفطائر وكريبات بألوان مبهجة وخدمة سريعة!",
-  "facebook": "https://www.facebook.com/",
-  "instagram": "https://www.instagram.com/",
-  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.219!2d31.265!3d29.966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2z!5e0!3m2!1sar!2seg!4v1700000000000",
-  "banners": [
-    "https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=800&auto=format&fit=crop&fm=webp",
-    "https://images.unsplash.com/photo-1548365328-9f547fb09501?q=80&w=800&auto=format&fit=crop&fm=webp",
-    "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop&fm=webp",
-    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=800&auto=format&fit=crop&fm=webp"
-  ]
+  "bannerImages": [
+    "https://i.pinimg.com/originals/71/08/52/710852314a8dbed556f17ed7ee669241.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400/138eb3152491155.631f598a22ba7.png",
+    "https://images6.alphacoders.com/108/1082011.jpg",
+    "https://tse3.mm.bing.net/th/id/OIP.3TE8Za4fxUj4GSvqFtCIbQHaE8?cb=thfvnext&w=600&h=400&rs=1&pid=ImgDetMain&o=7&rm=3"
+  ],
+  "phone": "+201027176052",
+  "whatsapp": "+201027176052",
+  "address": "قليوب البلد شارع داليا",
+  "facebook": "https://www.facebook.com/share/1AC6Cz8mNw/",
+  "instagram": "https://instagram.com/mamspizza"
 }

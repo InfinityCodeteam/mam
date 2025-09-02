@@ -1,20 +1,49 @@
 {
   "categories": [
-    {"id": "pizza", "name": "بيتزا"},
-    {"id": "feteer", "name": "فطائر"},
-    {"id": "crepe", "name": "كريب"},
-    {"id": "pasta", "name": "مكرونات"},
-    {"id": "hawawshi", "name": "حواوشي"},
-    {"id": "app", "name": "مقبلات"},
-    {"id": "drinks", "name": "مشروبات"}
-  ],
-  "subFilters": {
-    "pizza": ["إيطالي", "شرقي"],
-    "feteer": ["حادق", "حلو", "كيري"],
-    "crepe": ["حادق", "حلو", "ميكس"],
-    "pasta": ["وايت صوص", "ريد صوص"],
-    "hawawshi": ["كلاسيك", "جبن"],
-    "app": ["ساخن", "بارد"],
-    "drinks": ["صودا", "عصائر"]
-  }
+    {
+      "id": "pizza",
+      "name": "بيتزا",
+      "subCategories": [
+        { "id": "italian", "name": "إيطالي" },
+        { "id": "eastern", "name": "شرقي" }
+      ]
+    },
+    {
+      "id": "pie",
+      "name": "فطائر",
+      "subCategories": [
+        { "id": "savory", "name": "حادق" },
+        { "id": "sweet", "name": "حلو" }
+      ]
+    },
+    {
+      "id": "crepe",
+      "name": "كريب",
+      "subCategories": [
+        { "id": "savory", "name": "حادق" },
+        { "id": "sweet", "name": "حلو" },
+        { "id": "mix", "name": "ميكس" }
+      ]
+    },
+    {
+      "id": "pasta",
+      "name": "مكرونات",
+      "subCategories": []
+    },
+    {
+      "id": "hawawshi",
+      "name": "حواوشي",
+      "subCategories": []
+    },
+    {
+      "id": "appetizer",
+      "name": "مقبلات",
+      "subCategories": []
+    },
+    {
+      "id": "drink",
+      "name": "مشروبات",
+      "subCategories": []
+    }
+  ]
 }
